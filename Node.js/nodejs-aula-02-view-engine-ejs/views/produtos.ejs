@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>Bem-vindo a página produtos!</h1>
+
+    <h2>Lista de produtos:</h2>
+    <%#= produtos %>
+
+    <!-- Percorrendo a lista de produtos com forEach-->
+     <ul>
+        <% produtos.forEach(produto => { %>
+            <li> <%= produto.nome %> </li>
+            <li> <%= produto.preco.toLocaleString("pt-br",
+             {style: "currency", currency: "BRL"}) %> </li>
+            <br>
+        <% }) %>
+     </ul>
+
+    <br><br>
+    <ul>
+        <li><a href="/">Voltar</a></li>
+    </ul>
+</body>
+</html>
