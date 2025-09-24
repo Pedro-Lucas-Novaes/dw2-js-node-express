@@ -1,25 +1,28 @@
 <%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
 
+<h1>Bem-vindo a página Clientes</h1>
+    <hr>
+    <h3>Lista de clientes</h3>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <tr>
-                <th>Numero:</th>
-                <th>Produto:</th>
-                <th>Valor do ped:</th>
+                <th>Nome:</th>
+                <th>CPF:</th>
+                <th>Endereço:</th>
             </tr>
         </thead>
         <tbody>
             <!-- FOREACH -->
-             <% pedidos.forEach(pedido => { %>
+             <% clientes.forEach(cliente => { %>
                 <tr>
-                    <td><%= pedido.numero %></td>
-                    <td><%= pedido.produto %></td>
-                    <td><%= pedido.valorDoPedido %></td>
+                    <td><%= cliente.nome %></td>
+                    <td><%= cliente.cpf %></td>
+                    <td><%= cliente.endereco %></td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
-
 
     <ul>
         <li><a href="/">Voltar</a></li>

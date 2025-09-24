@@ -45,9 +45,10 @@ app.get("/clientes", (req, res) => {
 });
 
 // ROTA DE PERFIL
-app.get("/perfil", (req, res) => {
-  // Criando a variável que será enviada para a página
-  const user = "Pedro Lucas";
+// :user -> É um parâmetro da rota (OBRIGATÓRIO)
+// :user? -> É um parâmetro da rota (OPCIONAL)
+app.get("/perfil/:user", (req, res) => {
+  const user = req.params.user
   res.render("perfil", {
     // Enviando variáveis para a página EJS (HTML)
     user: user,
