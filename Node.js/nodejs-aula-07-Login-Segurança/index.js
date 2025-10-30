@@ -2,8 +2,13 @@
 import express from "express";
 // Iniciando o Express
 const app = express();
-// Importando o Express Session (gerador de sessões)
+
+//importando o Middleware de Autenticação
+import Auth from "./middleware/Auth.js"
+
+//importando o express session (gerador de sessões)
 import session from "express-session";
+
 // Importando o Sequelize
 import connection from "./config/sequelize-config.js";
 // Importando os Controllers
@@ -15,15 +20,14 @@ import UserController from "./controllers/UserController.js";
 //importando as Models
 import Cliente from "./models/Cliente.js";
 import Pedido from "./models/Pedido.js";
-
 //importando os relacionamentos
 import defineAssociations from "./config/associations.js";
 
-//Configurando o Express Session
+//configurando o express session
 app.use(
   session({
     secret: "minhalojasecret",
-    cookie: { maxAge: 3600000 }, // Sessão expira em 1 hora
+    cookie: { maxAge: 3600000 }, // sessão expira em uma hora
     saveUninitialized: false,
     resave: false,
   })
@@ -78,7 +82,7 @@ app.use("/", ProdutosController);
 app.use("/", UserController);
 
 // ROTA PRINCIPAL
-app.get("/", function (req, res) {
+app.get("/", Auth, function (req, res) {
   res.render("index");
 });
 
